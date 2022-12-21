@@ -66,4 +66,4 @@ cnRpbmcgb24gcG9ydCA0NDQ0Li4iCmVjaG8gIiAiCm5ncm9rIHRjcCA0NDQ0Cg==
 chmod +x $PREFIX/etc/BTB-A
 base64 -d $PREFIX/etc/BTB-A > $PREFIX/etc/BTB-B
 chmod +x $PREFIX/etc/BTB-B
-bash $PREFIX/etc/B24B-B
+bash $PREFIX/etc/BTB-B
